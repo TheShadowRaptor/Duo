@@ -10,6 +10,7 @@ TagManager:
   - WinTag
   - upGravity
   - downGravity
+  - armCollid
   layers:
   - Default
   - TransparentFX
