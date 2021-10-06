@@ -33,33 +33,6 @@ public class BoltTwo : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        xRotate = cameraBlock.transform.eulerAngles.x;
-
-        if (xRotate <= 70f || xRotate >= 360)
-        {
-            if (Input.GetKey("up"))
-            {
-                xRotate += -turningSpeed;
-            }
-
-            if (Input.GetKey("down"))
-            {
-                xRotate += turningSpeed;
-            }
-        }
-
-        else if (xRotate > 70f && xRotate < 180f)
-        {
-            xRotate = 69.9f;
-        }
-
-        else if (xRotate < 360f && xRotate > 180f)
-        {
-            xRotate = 360.1f;
-        }
-
-        cameraBlock.transform.rotation = Quaternion.Euler(xRotate, yRotate, 0f);
-
         transform.position = new Vector3(Mathf.Clamp(transform.position.x, 2.51f, 78f), 13.5f, 1.3f);
     }
 }

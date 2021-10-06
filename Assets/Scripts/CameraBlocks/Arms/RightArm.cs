@@ -15,8 +15,7 @@ public class RightArm : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
-    // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         if (stopF == false && Input.GetKey("f"))
         {
@@ -39,22 +38,23 @@ public class RightArm : MonoBehaviour
         }
     }
 
+    // Update is called once per frame
+    void FixedUpdate()
+    {
+        transform.localPosition = new Vector3(Mathf.Clamp(transform.position.x, 0.7f, 1.2f), -0.2f, 0.5f);
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         {
-            if (other.gameObject.CompareTag("armCollid") || other.gameObject.CompareTag("NormalBlock"))
+            if (other.gameObject.CompareTag("NormalBlock"))
             {
                 stopF = true;
-            }
-        }
-        if (other.gameObject.CompareTag("Screw"))
-        {
-            stopG = true;
+            }            
         }
     }
     private void OnTriggerExit(Collider other)
     {
         stopF = false;
-        stopG = false;
-    }
+    } 
 }

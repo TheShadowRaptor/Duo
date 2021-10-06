@@ -15,44 +15,44 @@ public class LeftArm : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
-    // Update is called once per frame
-    void FixedUpdate()
-    {  
-        if(stopF == false && Input.GetKey("f"))
+    void Update()
+    {
+        if (stopF == false && Input.GetKey("f"))
         {
             transform.Translate(0.01f, 0, 0);
         }
-        
+
         if (stopF == true)
-        {            
+        {
             transform.Translate(0, 0, 0);
         }
 
-        if(stopG == false && Input.GetKey("g"))
+        if (stopG == false && Input.GetKey("g"))
         {
             transform.Translate(-0.01f, 0, 0);
         }
 
-        if(stopG == true)
+        if (stopG == true)
         {
             transform.Translate(0, 0, 0);
         }
     }
+
+    // Update is called once per frame
+    void FixedUpdate()
+    {
+        transform.localPosition = new Vector3(Mathf.Clamp(transform.position.x, -1.043943f, -0.5439431f), 0.2f, 0.5f);
+    }
     private void OnTriggerEnter(Collider other)
     {
-       if (other.gameObject.CompareTag("armCollid") || other.gameObject.CompareTag("NormalBlock"))
-       {
-            stopF = true;
-       }
-       if (other.gameObject.CompareTag("Screw"))
+        if (other.gameObject.CompareTag("NormalBlock"))
         {
-            stopG = true;
+            stopF = true;
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
         stopF = false;
-        stopG = false;
     }
 }

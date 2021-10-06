@@ -18,6 +18,16 @@ public class PickUp : MonoBehaviour
         
     }
 
+    void FixedUpdate()
+    {
+        if (Input.GetKey("g"))
+        {
+            Rigidbody normalBoxRigidbody = normalBox.GetComponent<Rigidbody>();
+            normalBox.transform.parent = null;
+            normalBoxRigidbody.isKinematic = false;
+        }
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject == normalBox && Input.GetKey("f"))
@@ -25,14 +35,6 @@ public class PickUp : MonoBehaviour
             Rigidbody normalBoxRigidbody = normalBox.GetComponent<Rigidbody>();
             normalBox.transform.parent = transform;
             normalBoxRigidbody.isKinematic = true;
-            Debug.Log("Box's Grand parent: " + normalBox.transform.parent.parent.name);
-        }
-
-        if (Input.GetKey("g"))
-        {
-            Rigidbody normalBoxRigidbody = normalBox.GetComponent<Rigidbody>();
-            normalBox.transform.parent = null;
-            normalBoxRigidbody.isKinematic = false;
-        }
+        }        
     }
 }
