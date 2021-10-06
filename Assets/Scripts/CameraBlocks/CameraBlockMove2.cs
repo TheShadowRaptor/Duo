@@ -62,6 +62,6 @@ public class CameraBlockMove2 : MonoBehaviour
 
         cameraBlock.transform.rotation = Quaternion.Euler(xRotate, yRotate, 0f);
 
-        transform.position = new Vector3(Mathf.Clamp(transform.position.x, 1f, 78f), 15.0f, 1f);
+        transform.position = new Vector3(Mathf.Clamp(transform.position.x, 1.423943f, 78f), 14.0f, 1f);
     }
 }

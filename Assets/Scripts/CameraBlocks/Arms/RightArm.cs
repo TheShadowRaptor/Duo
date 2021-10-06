@@ -7,7 +7,8 @@ public class RightArm : MonoBehaviour
     public float movingSpeed = 0;
     private Rigidbody rb;
 
-    public bool stop = false;
+    public bool stopF = false;
+    public bool stopG = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,17 +18,24 @@ public class RightArm : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (Input.GetKey("f"))
+        if (stopF == false && Input.GetKey("f"))
         {
             transform.Translate(-0.01f, 0, 0);
         }
 
-        if(stop == true)
+        if (stopF == true)
         {
-            if (Input.GetKey("f"))
-            {
-                transform.Translate(0.01f, 0, 0);
-            }
+            transform.Translate(0, 0, 0);
+        }
+
+        if (stopG == false && Input.GetKey("g"))
+        {
+            transform.Translate(0.01f, 0, 0);
+        }
+
+        if (stopG == true)
+        {
+            transform.Translate(0, 0, 0);
         }
     }
 
@@ -36,9 +44,17 @@ public class RightArm : MonoBehaviour
         {
             if (other.gameObject.CompareTag("armCollid") || other.gameObject.CompareTag("NormalBlock"))
             {
-                stop = true;
+                stopF = true;
             }
         }
+        if (other.gameObject.CompareTag("Screw"))
+        {
+            stopG = true;
+        }
     }
-
+    private void OnTriggerExit(Collider other)
+    {
+        stopF = false;
+        stopG = false;
+    }
 }
