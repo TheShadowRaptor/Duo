@@ -41,7 +41,9 @@ public class LeftArm : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        transform.localPosition = new Vector3(Mathf.Clamp(transform.position.x, -1.043943f, -0.5439431f), 0.2f, 0.5f);
+        float xPos = Mathf.Clamp(transform.localPosition.x, -0.069f, 0.464f);
+        transform.localPosition = new Vector3(xPos, 0.532f, 0.329f);
+
     }
     private void OnTriggerEnter(Collider other)
     {
