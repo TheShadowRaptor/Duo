@@ -21,20 +21,22 @@ public class D103Stage2 : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-        if (Input.GetKey("left"))
-        {
-            transform.Translate(-0.01f, 0, 0);
-        }
-
-        if (Input.GetKey("right"))
-        {
-            transform.Translate(0.01f, 0, 0);
-        }
+    {     
+        
     }
 
     private void FixedUpdate()
     {
+        if (Input.GetKey("left"))
+        {
+            transform.Translate(-0.05f, 0, 0);
+        }
+
+        if (Input.GetKey("right"))
+        {
+            transform.Translate(0.05f, 0, 0);
+        }
+
         xRotate = cameraBlock.transform.eulerAngles.x;
 
         if (xRotate <= 70f || xRotate >= 360)

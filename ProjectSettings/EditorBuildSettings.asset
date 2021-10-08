@@ -17,5 +17,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Levels/TestChamber2.unity
     guid: a482c16a3608e76488e34ea68a332fa0
+  - enabled: 1
+    path: Assets/Levels/TestChamber3.unity
+    guid: 6fa132b86f7495c4f8fe1c170d31e1d2
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 9ce6a7082abd94243b53929469219135, type: 2}

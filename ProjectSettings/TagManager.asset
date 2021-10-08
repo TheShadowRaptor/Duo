@@ -12,6 +12,8 @@ TagManager:
   - downGravity
   - armCollid
   - Screw
+  - Acid
+  - smallBox
   layers:
   - Default
   - TransparentFX
