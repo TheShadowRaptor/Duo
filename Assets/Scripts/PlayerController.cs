@@ -25,30 +25,35 @@ public class PlayerController : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
+        //=================Gives RigidBody=====================
     {
         rb = GetComponent<Rigidbody>();     
     }
-
+        //=====================================================
     void Update()
     {
+        //=================Clamps Jump=========================
         if(rb.velocity.magnitude > jump)
         {
             rb.velocity = Vector3.ClampMagnitude(rb.velocity, jump);
         }
+        //=====================================================
     }
 
     private void OnMove(InputValue movementValue)
     {
+        //============Determines movement values================
         Vector2 movementVector = movementValue.Get<Vector2>();
 
         MovementX = movementVector.x;
         MovementY = movementVector.y;
-
+        //======================================================
     }
 
     // Update is called once per frame
     private void FixedUpdate()
     {     
+        //=================Raycast Ground detect================
         RaycastHit hit;
         Ray Grounded = new Ray(transform.position, Vector3.down);
 
@@ -67,20 +72,28 @@ public class PlayerController : MonoBehaviour
 
             }
         }
+        //======================================================
+
+        //====================Adds Force to ball================
         Vector3 movement = new Vector3(MovementX, 0.0f, MovementY);
 
         rb.AddForce(movement * speed);
-        rb.AddForce(Physics.gravity * rb.mass);
-        
-        
+        //======================================================
 
-            if (isgrounded && Input.GetButton("Jump"))
+        //==================Gives Mass Gravity==================
+        rb.AddForce(Physics.gravity * rb.mass);
+        //======================================================
+
+        //====================Jump button=======================
+        if (isgrounded && Input.GetButton("Jump"))
             {
                 rb.AddForce(new Vector3(0, jump, 0), ForceMode.Impulse);               
                 isgrounded = false;
 
             }         
-            
+         //=====================================================
+
+         //===================False Gravity===================== (Temp)
             if (gravityNorm == true)
         {
             rb.AddForce(0, falseGravityPos, 0);
@@ -89,10 +102,12 @@ public class PlayerController : MonoBehaviour
         {
             rb.AddForce(0, falseGravityNag, 0);
         }
+           //==================================================
     }
 
     private void OnCollisionEnter(Collision collision)
     {
+        //=================Gravity Changer detect=============
         if (collision.gameObject.tag == ("upGravity"))
         {
             gravityNorm = false;
@@ -103,10 +118,18 @@ public class PlayerController : MonoBehaviour
         {
             gravityNorm = true;
         }
+        //======================================================
+    }
 
-        if (collision.gameObject.tag == ("Acid"))
+    private void OnTriggerEnter(Collider other)
+    {
+        // ================Acid Detect=====================
+
+        if (other.gameObject.CompareTag("Acid"))
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
+
+        //==================================================
     }
 }
