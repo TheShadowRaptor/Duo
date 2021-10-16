@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Acid
-  m_Shader: {fileID: -6465566751694194690, guid: 48be82361e965ea40b26ba2fdd4857fe, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 65e00a86ba0007e4cb14c1485e4e62b8, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -19,6 +19,10 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - Texture2D_37ea52415c2e41bb85addc19dcdf25c7:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -31,6 +35,16 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    m_Floats: []
-    m_Colors: []
+    m_Floats:
+    - Vector1_0595c2c6340444c7a2726a344c84c0ce: 5
+    - Vector1_3e76c39dcdd64448a57f18bca7aec63d: 0.33
+    - Vector1_420022cef6224d658b1b2fa04edb525b: 0.01
+    - Vector1_59eba3d42add44f59c0514c53773f8bd: 5
+    - Vector1_e0daa2787500428297548f1525251cc2: 1
+    - Vector1_e604218114fa4d6886a8bbe215800997: 5
+    - Vector1_f9ed99baa7494859b6efc59fb191fdf8: 0.05
+    m_Colors:
+    - Color_918231e918f54274911e9c7e83087c44: {r: 0.30588236, g: 1.4980392, b: 0, a: 1}
+    - Color_93989779cddc4490b4c4626d77c95632: {r: 0.08708268, g: 0.7075471, b: 0, a: 0.69411767}
+    - Color_e25337271a0d45af93562ff92193be4d: {r: 0, g: 0.8739645, b: 0, a: 0.972549}
   m_BuildTextureStacks: []
