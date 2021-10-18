@@ -5,6 +5,9 @@ using UnityEngine;
 public class PickUp : MonoBehaviour
 {
     public GameObject normalBox;
+
+    public Material PickUpMaterial;
+    public Material NormalMaterial;
     
     // Start is called before the first frame update
     void Start()
@@ -23,6 +26,7 @@ public class PickUp : MonoBehaviour
         if (Input.GetKey("g"))
         {
             Rigidbody normalBoxRigidbody = normalBox.GetComponent<Rigidbody>();
+            normalBox.GetComponent<Renderer>().material = NormalMaterial;
             normalBox.transform.parent = null;
             normalBoxRigidbody.isKinematic = false;
         }
@@ -33,6 +37,7 @@ public class PickUp : MonoBehaviour
         if (other.gameObject == normalBox && Input.GetKey("f"))
         {
             Rigidbody normalBoxRigidbody = normalBox.GetComponent<Rigidbody>();
+            normalBox.GetComponent<Renderer>().material = PickUpMaterial;
             normalBox.transform.parent = transform;
             normalBoxRigidbody.isKinematic = true;
         }        

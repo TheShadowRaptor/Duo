@@ -9,6 +9,8 @@ public class RightArm : MonoBehaviour
 
     public bool stopF = false;
     public bool stopG = false;
+
+    public GameObject NormalBlock;
     // Start is called before the first frame update
     void Start()
     {
