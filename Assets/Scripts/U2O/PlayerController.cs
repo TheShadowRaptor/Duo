@@ -91,7 +91,6 @@ public class PlayerController : MonoBehaviour
                 isgrounded = false;
 
             }
-        else if ()
          //=====================================================
 
          //===================False Gravity===================== (Temp)
