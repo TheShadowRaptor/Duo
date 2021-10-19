@@ -90,7 +90,8 @@ public class PlayerController : MonoBehaviour
                 rb.AddForce(new Vector3(0, jump, 0), ForceMode.Impulse);               
                 isgrounded = false;
 
-            }         
+            }
+        else if ()
          //=====================================================
 
          //===================False Gravity===================== (Temp)
