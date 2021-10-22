@@ -30,12 +30,20 @@ public class D103Universal : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (Input.GetKey("left") && moveL == (true))
+        if (Input.GetKey("left") && moveL == (true) && Input.GetKey("left shift"))
+        {
+            transform.Translate(-0.12f, 0, 0);
+        }
+        else if (Input.GetKey("left") && moveL == (true))
         {
             transform.Translate(-0.07f, 0, 0);
         }
 
-        if (Input.GetKey("right") && moveR == (true))
+        if (Input.GetKey("right") && moveR == (true) && Input.GetKey("left shift"))
+        {
+            transform.Translate(0.12f, 0, 0);
+        }
+        else if (Input.GetKey("right") && moveR == (true))
         {
             transform.Translate(0.07f, 0, 0);
         }
@@ -70,11 +78,11 @@ public class D103Universal : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Wall") && Input.GetKey("left"))
+        if (collision.gameObject.CompareTag("Wall") && Input.GetKey("left") || collision.gameObject.CompareTag("Wall") && Input.GetKey("left") && Input.GetKey("left shift"))
         {
             moveL = false;
         }
-        if (collision.gameObject.CompareTag("Wall") && Input.GetKey("right"))
+        if (collision.gameObject.CompareTag("Wall") && Input.GetKey("right") || collision.gameObject.CompareTag("Wall") && Input.GetKey("right") && Input.GetKey("left shift"))
         {
             moveR = false;
         }
