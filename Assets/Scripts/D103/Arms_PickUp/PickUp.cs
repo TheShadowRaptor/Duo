@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class PickUp : MonoBehaviour
 {
-    public GameObject normalBox;
+
+    public Transform theDest;
 
     public Material PickUpMaterial;
     public Material NormalMaterial;
-    
+
+    public Rigidbody rb;
     // Start is called before the first frame update
     void Start()
     {
-        
+        rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -25,21 +27,25 @@ public class PickUp : MonoBehaviour
     {
         if (Input.GetKey("g"))
         {
-            Rigidbody normalBoxRigidbody = normalBox.GetComponent<Rigidbody>();
-            normalBox.GetComponent<Renderer>().material = NormalMaterial;
-            normalBox.transform.parent = null;
-            normalBoxRigidbody.isKinematic = false;
+            this.transform.parent = null;
+            this.GetComponent<Renderer>().material = NormalMaterial;
+            GetComponent<Rigidbody>().useGravity = true;
+            rb.isKinematic = false;
         }
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject == normalBox && Input.GetKey("f"))
+    void OnTriggerEnter(Collider other)
+    {      
+        if (Input.GetKey("f"))
         {
-            Rigidbody normalBoxRigidbody = normalBox.GetComponent<Rigidbody>();
-            normalBox.GetComponent<Renderer>().material = PickUpMaterial;
-            normalBox.transform.parent = transform;
-            normalBoxRigidbody.isKinematic = true;
-        }        
+            GetComponent<Rigidbody>().useGravity = false;
+            this.GetComponent<Renderer>().material = PickUpMaterial;
+            this.transform.position = theDest.position;
+            this.transform.parent = GameObject.Find("Destination").transform;
+            rb.isKinematic = true;
+        }
+            
+            
+            
     }
 }
