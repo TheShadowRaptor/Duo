@@ -10,7 +10,7 @@ public class PickUp : MonoBehaviour
     public Material PickUpMaterial;
     public Material NormalMaterial;
 
-    public Rigidbody rb;
+    private Rigidbody rb;
     // Start is called before the first frame update
     void Start()
     {
