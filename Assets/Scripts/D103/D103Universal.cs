@@ -84,13 +84,12 @@ public class D103Universal : MonoBehaviour
         if (collision.gameObject.CompareTag("Wall") && Input.GetKey("left") || collision.gameObject.CompareTag("Wall") && Input.GetKey("left") && Input.GetKey("left shift"))
         {
             moveL = false;
-            moveDL = false;
         }
         if (collision.gameObject.CompareTag("Wall") && Input.GetKey("right") || collision.gameObject.CompareTag("Wall") && Input.GetKey("right") && Input.GetKey("left shift"))
         {
             moveR = false;
         }
-        if (collision.gameObject.tag == "Floor" && Input.GetKey("down"))
+        if (collision.gameObject.name == "Floor" && Input.GetKey("down"))
         {
             moveDown = false;
             Debug.Log("Hit");
@@ -107,7 +106,6 @@ public class D103Universal : MonoBehaviour
         moveR = true;
         moveDown = true;
         moveUp = true;
-        moveDL = true;
     }
 }
 
