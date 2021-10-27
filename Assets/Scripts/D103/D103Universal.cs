@@ -10,6 +10,9 @@ public class D103Universal : MonoBehaviour
 
     public bool moveL = true;
     public bool moveR = true;
+    public bool moveDown = true;
+    public bool moveUp = true;
+    public bool moveDL = true;
 
     private Rigidbody rb;
 
@@ -52,23 +55,23 @@ public class D103Universal : MonoBehaviour
 
         if (xRotate <= 70f || xRotate >= 360)
         {
-            if (Input.GetKey("up"))
+            if (Input.GetKey("up") && (moveUp == true))
             {
                 xRotate += -turningSpeed;
             }
 
-            if (Input.GetKey("down"))
+            if (Input.GetKey("down") && (moveDown == true))
             {
                 xRotate += turningSpeed;
             }
         }
 
-        else if (xRotate > 70f && xRotate < 180f)
+        else if (xRotate > 70f && xRotate < 170f)
         {
             xRotate = 69.9f;
         }
 
-        else if (xRotate < 360f && xRotate > 180f)
+        else if (xRotate < 360f && xRotate > 170f)
         {
             xRotate = 360.1f;
         }
@@ -81,10 +84,20 @@ public class D103Universal : MonoBehaviour
         if (collision.gameObject.CompareTag("Wall") && Input.GetKey("left") || collision.gameObject.CompareTag("Wall") && Input.GetKey("left") && Input.GetKey("left shift"))
         {
             moveL = false;
+            moveDL = false;
         }
         if (collision.gameObject.CompareTag("Wall") && Input.GetKey("right") || collision.gameObject.CompareTag("Wall") && Input.GetKey("right") && Input.GetKey("left shift"))
         {
             moveR = false;
+        }
+        if (collision.gameObject.tag == "Floor" && Input.GetKey("down"))
+        {
+            moveDown = false;
+            Debug.Log("Hit");
+        }
+        if (collision.gameObject.CompareTag("Ceiling") && Input.GetKey("up"))
+        {
+            moveUp = false;
         }
     }
 
@@ -92,6 +105,9 @@ public class D103Universal : MonoBehaviour
     {
         moveL = true;
         moveR = true;
+        moveDown = true;
+        moveUp = true;
+        moveDL = true;
     }
 }
 

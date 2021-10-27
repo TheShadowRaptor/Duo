@@ -34,9 +34,9 @@ public class PickUp : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter(Collider other)
-    {      
-        if (Input.GetKey("f"))
+    void OnTriggerStay(Collider other)
+    {
+        if (Input.GetKey("f") && other.gameObject.tag == "GravityBeam")
         {
             GetComponent<Rigidbody>().useGravity = false;
             this.GetComponent<Renderer>().material = PickUpMaterial;

@@ -17,6 +17,9 @@ TagManager:
   - Wall
   - triggerBox
   - boxTrigger
+  - Floor
+  - Ceiling
+  - GravityBeam
   layers:
   - Default
   - TransparentFX
