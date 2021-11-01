@@ -81,15 +81,15 @@ public class D103Universal : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Wall") && Input.GetKey("left") || collision.gameObject.CompareTag("Wall") && Input.GetKey("left") && Input.GetKey("left shift"))
+        if (collision.gameObject.CompareTag("Wall") && Input.GetKey("left"))
         {
             moveL = false;
         }
-        if (collision.gameObject.CompareTag("Wall") && Input.GetKey("right") || collision.gameObject.CompareTag("Wall") && Input.GetKey("right") && Input.GetKey("left shift"))
+        if (collision.gameObject.CompareTag("Wall") && Input.GetKey("right") || (collision.gameObject.CompareTag("Wall") && Input.GetKey("right") && Input.GetKey("left shift")))
         {
             moveR = false;
         }
-        if (collision.gameObject.name == "Floor" && Input.GetKey("down"))
+        if (collision.gameObject.CompareTag("Floor"))
         {
             moveDown = false;
             Debug.Log("Hit");
@@ -98,14 +98,34 @@ public class D103Universal : MonoBehaviour
         {
             moveUp = false;
         }
+        if (collision.gameObject.CompareTag("Floor") && collision.gameObject.CompareTag("Wall"))
+        {
+            moveDown = false;
+            moveR = false;
+        }
     }
 
     private void OnCollisionExit(Collision collision)
     {
-        moveL = true;
-        moveR = true;
-        moveDown = true;
-        moveUp = true;
+        if (collision.gameObject.CompareTag("Wall"))
+        {
+            moveL = true;
+        }
+
+        if (collision.gameObject.CompareTag("Wall"))
+        {
+            moveR = true;
+        }
+
+        if (collision.gameObject.CompareTag("Floor"))
+        {
+            moveDown = true;
+        }
+        
+        if (collision.gameObject.CompareTag("Ceiling"))
+        {
+            moveUp = true;
+        }
     }
 }
 
