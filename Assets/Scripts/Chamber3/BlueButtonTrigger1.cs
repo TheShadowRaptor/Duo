@@ -4,15 +4,23 @@ using UnityEngine;
 
 public class BlueButtonTrigger1 : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public GameObject AnimatedObject;
+
+    private Animator _animator;
+
+    private void Start()
     {
-        
+        _animator = AnimatedObject.GetComponent<Animator>();
     }
 
-    // Update is called once per frame
-    void Update()
+    void OnTriggerEnter(Collider other)
     {
-        
+        _animator.enabled = true;
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        _animator.enabled = false;
     }
 }
+
