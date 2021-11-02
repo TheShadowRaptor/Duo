@@ -5,7 +5,7 @@ using UnityEngine;
 public class PickUp : MonoBehaviour
 {
 
-    public Transform theDest;
+    private Transform theDest;
 
     public Material PickUpMaterial;
     public Material NormalMaterial;
@@ -15,6 +15,7 @@ public class PickUp : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        theDest = GameObject.FindWithTag("Dest").transform;
     }
 
     // Update is called once per frame
