@@ -17,7 +17,7 @@ public class D103Universal : MonoBehaviour
     private Rigidbody rb;
 
     private float xRotate;
-    private float yRotate;
+    public float yRotate;
 
     // Start is called before the first frame update
     void Start()
