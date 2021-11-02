@@ -5410,3 +5410,4 @@ Received Import Request.
 Start importing Assets/Materials/Laser.mat using Guid(425a381e629346646bf0c3708b8719cd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '44643a81b9d5190815c276ba14e9b538') in 0.024775 seconds 
   Import took 0.036679 seconds .
 
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file
