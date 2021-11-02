@@ -75,7 +75,7 @@ public class PlayerController : MonoBehaviour
         //======================================================
 
         //====================Adds Force to ball================
-        Vector3 movement = new Vector3(MovementX, 0.0f, MovementY);
+        Vector3 movement = Quaternion.Euler(0, Camera.main.transform.eulerAngles.y, 0) * new Vector3(MovementX, 0.0f, MovementY);
 
         rb.AddForce(movement * speed);
         //======================================================
