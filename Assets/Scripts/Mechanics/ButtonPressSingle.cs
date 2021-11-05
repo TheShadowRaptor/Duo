@@ -4,27 +4,35 @@ using UnityEngine;
 
 public class ButtonPressSingle : MonoBehaviour
 {
-    public GameObject trigger;
-
     public GameObject AnimatedObject;
+    public GameObject Button;
+    public bool isDoorOpen;
+    public bool Pressed;
 
+    private Animator blueButton;
     private Animator _animator;
-    // Start is called before the first frame update
 
-    private void Start()
+
+    // Start is called before the first frame update
+    void Start()
     {
         _animator = AnimatedObject.GetComponent<Animator>();
-    }
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.tag == ("NormalBlock") || collision.gameObject.tag == ("Player") || collision.gameObject.tag == ("smallBox"))
-        {
-            trigger.SetActive(true);
-
-            _animator.enabled = true;
-        }
+        blueButton = Button.GetComponent<Animator>();
     }
 
     // Update is called once per frame
+    void Update()
+    {
+        _animator.SetBool("IsDoorOpen", isDoorOpen);
+        blueButton.SetBool("Pressed", Pressed);
+    }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == ("NormalBlock") || collision.gameObject.tag == ("smallBox") || collision.gameObject.tag == ("Player"))
+        {
+            isDoorOpen = true;
+            Pressed = true;
+        }
+    }
 }

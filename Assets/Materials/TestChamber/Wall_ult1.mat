@@ -579,7 +579,7 @@ Material:
     - _METALNESS: 0
     - _MaskBlendSrc: 1
     - _MaterialID: 1
-    - _Metallic: 0
+    - _Metallic: 0.12
     - _Metallic0: 0
     - _Metallic1: 0
     - _Metallic2: 0
