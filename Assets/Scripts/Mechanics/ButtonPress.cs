@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class ButtonPress : MonoBehaviour
 {
-    public GameObject door;
-    public GameObject doorAnimate;
     public GameObject AnimatedObject;
-    private Animator _animator;
+    public bool isDoorOpen;
+    public Animator _animator;
     
     // Start is called before the first frame update
     void Start()
@@ -18,23 +17,19 @@ public class ButtonPress : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        _animator.SetBool("IsDoorOpen", isDoorOpen);
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == ("NormalBlock") || collision.gameObject.tag == ("smallBox") || collision.gameObject.tag == ("Player"))
         {
-            door.SetActive(false);
-            doorAnimate.SetActive(true);
-            _animator.enabled = true;
+            isDoorOpen = true;
         }
     }
 
     private void OnCollisionExit(Collision collision)
     {
-        door.SetActive(true);
-        doorAnimate.SetActive(false);
-   
+        isDoorOpen = false;   
     }
 }
