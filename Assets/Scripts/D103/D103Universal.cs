@@ -98,11 +98,6 @@ public class D103Universal : MonoBehaviour
         {
             moveUp = false;
         }
-        if (collision.gameObject.CompareTag("Floor") && collision.gameObject.CompareTag("Wall"))
-        {
-            moveDown = false;
-            moveR = false;
-        }
     }
 
     private void OnCollisionExit(Collision collision)
