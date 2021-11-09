@@ -37,40 +37,40 @@ public class D103Universal : MonoBehaviour
     {
         if (Input.GetKey("left") && moveL == (true) && Input.GetKey("left shift") && isGravityFlipped == (false))
         {
-            transform.Translate(-0.12f, 0, 0);
+            transform.Translate(-0.17f, 0, 0);
         }
         else if (Input.GetKey("left") && moveL == (true && isGravityFlipped == (false)))
         {
-            transform.Translate(-0.07f, 0, 0);
+            transform.Translate(-0.12f, 0, 0);
         }
 
         if (Input.GetKey("right") && moveR == (true) && Input.GetKey("left shift") && isGravityFlipped == (false))
         {
-            transform.Translate(0.12f, 0, 0);
+            transform.Translate(0.17f, 0, 0);
         }
         else if (Input.GetKey("right") && moveR == (true) && isGravityFlipped == (false))
         {
-            transform.Translate(0.07f, 0, 0);
+            transform.Translate(0.12f, 0, 0);
         }
 
         //------------------------------------------------GravityFlip----------------------------------------------------
 
         if (Input.GetKey("left") && moveL == (true) && Input.GetKey("left shift") && isGravityFlipped == (true))
         {
-            transform.Translate(0.12f, 0, 0);
+            transform.Translate(0.17f, 0, 0);
         }
         else if (Input.GetKey("left") && moveL == (true && isGravityFlipped == (true)))
         {
-            transform.Translate(0.07f, 0, 0);
+            transform.Translate(0.12f, 0, 0);
         }
 
         if (Input.GetKey("right") && moveR == (true) && Input.GetKey("left shift") && isGravityFlipped == (true))
         {
-            transform.Translate(-0.12f, 0, 0);
+            transform.Translate(-0.17f, 0, 0);
         }
         else if (Input.GetKey("right") && moveR == (true) && isGravityFlipped == (true))
         {
-            transform.Translate(-0.07f, 0, 0);
+            transform.Translate(-0.12f, 0, 0);
         }
 
         xRotate = cameraBlock.transform.eulerAngles.x;
