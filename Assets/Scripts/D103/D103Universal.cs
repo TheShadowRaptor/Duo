@@ -75,7 +75,7 @@ public class D103Universal : MonoBehaviour
 
         xRotate = cameraBlock.transform.eulerAngles.x;
 
-        if (xRotate <= 70f || xRotate >= 360)
+        if (xRotate <= 70f || xRotate >= 290)
         {
             if (Input.GetKey("up") && (moveUp == true) && isGravityFlipped == (false))
             {
@@ -105,9 +105,9 @@ public class D103Universal : MonoBehaviour
             xRotate = 69.9f;
         }
 
-        else if (xRotate < 360f && xRotate > 170f)
+        else if (xRotate < 290f && xRotate > 170f)
         {
-            xRotate = 360.1f;
+            xRotate = 290.1f;
         }
 
         cameraBlock.transform.rotation = Quaternion.Euler(xRotate, yRotate, 0f);
