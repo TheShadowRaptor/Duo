@@ -14,6 +14,8 @@ public class D103Universal : MonoBehaviour
     public bool moveUp = true;
     public bool moveDL = true;
 
+    public bool isGravityFlipped = false;
+
     private Rigidbody rb;
 
     private float xRotate;
@@ -28,41 +30,73 @@ public class D103Universal : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        
     }
 
     private void FixedUpdate()
     {
-        if (Input.GetKey("left") && moveL == (true) && Input.GetKey("left shift"))
+        if (Input.GetKey("left") && moveL == (true) && Input.GetKey("left shift") && isGravityFlipped == (false))
         {
             transform.Translate(-0.12f, 0, 0);
         }
-        else if (Input.GetKey("left") && moveL == (true))
+        else if (Input.GetKey("left") && moveL == (true && isGravityFlipped == (false)))
         {
             transform.Translate(-0.07f, 0, 0);
         }
 
-        if (Input.GetKey("right") && moveR == (true) && Input.GetKey("left shift"))
+        if (Input.GetKey("right") && moveR == (true) && Input.GetKey("left shift") && isGravityFlipped == (false))
         {
             transform.Translate(0.12f, 0, 0);
         }
-        else if (Input.GetKey("right") && moveR == (true))
+        else if (Input.GetKey("right") && moveR == (true) && isGravityFlipped == (false))
         {
             transform.Translate(0.07f, 0, 0);
+        }
+
+        //------------------------------------------------GravityFlip----------------------------------------------------
+
+        if (Input.GetKey("left") && moveL == (true) && Input.GetKey("left shift") && isGravityFlipped == (true))
+        {
+            transform.Translate(0.12f, 0, 0);
+        }
+        else if (Input.GetKey("left") && moveL == (true && isGravityFlipped == (true)))
+        {
+            transform.Translate(0.07f, 0, 0);
+        }
+
+        if (Input.GetKey("right") && moveR == (true) && Input.GetKey("left shift") && isGravityFlipped == (true))
+        {
+            transform.Translate(-0.12f, 0, 0);
+        }
+        else if (Input.GetKey("right") && moveR == (true) && isGravityFlipped == (true))
+        {
+            transform.Translate(-0.07f, 0, 0);
         }
 
         xRotate = cameraBlock.transform.eulerAngles.x;
 
         if (xRotate <= 70f || xRotate >= 360)
         {
-            if (Input.GetKey("up") && (moveUp == true))
+            if (Input.GetKey("up") && (moveUp == true) && isGravityFlipped == (false))
             {
                 xRotate += -turningSpeed;
             }
 
-            if (Input.GetKey("down") && (moveDown == true))
+            if (Input.GetKey("down") && (moveDown == true) && isGravityFlipped == (false))
             {
                 xRotate += turningSpeed;
+            }
+
+            //----------------------------------GravityFlip--------------------------------
+
+            if (Input.GetKey("up") && (moveUp == true) && isGravityFlipped == (true))
+            {
+                xRotate += turningSpeed;
+            }
+
+            if (Input.GetKey("down") && (moveDown == true) && isGravityFlipped == (true))
+            {
+                xRotate += -turningSpeed;
             }
         }
 
@@ -98,6 +132,8 @@ public class D103Universal : MonoBehaviour
         {
             moveUp = false;
         }
+        //-------------------------------------------------------------------------------
+    
     }
 
     private void OnCollisionExit(Collision collision)

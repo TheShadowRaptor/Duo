@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody rb;
 
     public bool isgrounded;
+    public bool isGravityFlipped = false;
 
     private float MovementX;
     private float MovementY;
@@ -54,30 +55,63 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {     
         //=================Raycast Ground detect================
-        RaycastHit hit;
-        Ray Grounded = new Ray(transform.position, Vector3.down);
-
-        if (!isgrounded)
+        
+        if (isGravityFlipped == false)
         {
-            if (Physics.Raycast(Grounded, out hit, rayLength))
+            RaycastHit hit;
+            Ray Grounded = new Ray(transform.position, Vector3.down);
+            if (!isgrounded)
             {
-                if (hit.collider)
+                if (Physics.Raycast(Grounded, out hit, rayLength))
                 {
-                    isgrounded = true;
+                    if (hit.collider)
+                    {
+                        isgrounded = true;
+                    }
+                    else
+                    {
+                        isgrounded = false;
+                    }
                 }
-                else
-                {
-                    isgrounded = false;
-                }
-
             }
         }
+
+        if (isGravityFlipped == true)
+        {
+            RaycastHit hit;
+            Ray Grounded = new Ray(transform.position, Vector3.up);
+            if (!isgrounded)
+            {
+                if (Physics.Raycast(Grounded, out hit, rayLength))
+                {
+                    if (hit.collider)
+                    {
+                        isgrounded = true;
+                    }
+                    else
+                    {
+                        isgrounded = false;
+                    }
+                }
+            }
+        }
+
         //======================================================
 
-        //====================Adds Force to ball================
-        Vector3 movement = Quaternion.Euler(0, Camera.main.transform.eulerAngles.y, 0) * new Vector3(MovementX, 0.0f, MovementY);
+        //====================Adds Force to ball================        
 
-        rb.AddForce(movement * speed);
+        if (isGravityFlipped == false)
+        {
+            Vector3 movement = Quaternion.Euler(0, Camera.main.transform.eulerAngles.y, 0) * new Vector3(MovementX, 0.0f, MovementY);
+            rb.AddForce(movement * speed);
+        }
+
+        if (isGravityFlipped == true)
+        {
+            Vector3 movement = Quaternion.Euler(0, Camera.main.transform.eulerAngles.y, 0) * new Vector3(-MovementX, 0.0f, MovementY);
+            rb.AddForce(movement * speed);
+        }
+
         //======================================================
 
         //==================Gives Mass Gravity==================
@@ -85,16 +119,23 @@ public class PlayerController : MonoBehaviour
         //======================================================
 
         //====================Jump button=======================
-        if (isgrounded && Input.GetButton("Jump"))
+        if (isgrounded && Input.GetButton("Jump") && isGravityFlipped == false)
             {
                 rb.AddForce(new Vector3(0, jump, 0), ForceMode.Impulse);               
                 isgrounded = false;
 
             }
-         //=====================================================
 
-         //===================False Gravity===================== (Temp)
-            if (gravityNorm == true)
+        if (isgrounded && Input.GetButton("Jump") && isGravityFlipped == true)
+        {
+            rb.AddForce(new Vector3(0, -jump, 0), ForceMode.Impulse);
+            isgrounded = false;
+
+        }
+        //=====================================================
+
+        //===================False Gravity===================== (Temp)
+        if (gravityNorm == true)
         {
             rb.AddForce(0, falseGravityPos, 0);
         }
