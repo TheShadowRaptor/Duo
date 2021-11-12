@@ -39,7 +39,7 @@ public class D103Universal : MonoBehaviour
         {
             transform.Translate(-0.17f, 0, 0);
         }
-        else if (Input.GetKey("left") && moveL == (true && isGravityFlipped == (false)))
+        else if (Input.GetKey("left") && moveL == (true) && isGravityFlipped == (false))
         {
             transform.Translate(-0.12f, 0, 0);
         }
@@ -59,7 +59,7 @@ public class D103Universal : MonoBehaviour
         {
             transform.Translate(0.17f, 0, 0);
         }
-        else if (Input.GetKey("left") && moveL == (true && isGravityFlipped == (true)))
+        else if (Input.GetKey("left") && moveL == (true) && isGravityFlipped == (true))
         {
             transform.Translate(0.12f, 0, 0);
         }
@@ -109,8 +109,7 @@ public class D103Universal : MonoBehaviour
         {
             xRotate = 290.1f;
         }
-
-        cameraBlock.transform.rotation = Quaternion.Euler(xRotate, yRotate, 0f);
+            cameraBlock.transform.rotation = Quaternion.Euler(xRotate, yRotate, 0f);
     }
 
     private void OnCollisionEnter(Collision collision)

@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class GravityFlip_P : MonoBehaviour
 {
-    public bool flip = false;
-
-    public GameObject camera;
+    public GameObject gravity;
 
     public GameObject D103;
     public GameObject U20;
+
+    private void Start()
+    {
+        
+    }
 
     private void Update()
     {
@@ -21,8 +24,7 @@ public class GravityFlip_P : MonoBehaviour
         if (collision.gameObject.tag == ("Player"))
         {
             Physics.gravity = new Vector3(0f, -9.807f, 0f);
-            camera.transform.Rotate(0, 0 * Time.deltaTime, -180);
-            flip = true;
+            gravity.GetComponent<GravityFlip>().isFlipped = false;
             D103.GetComponent<D103Universal>().isGravityFlipped = false;
             U20.GetComponent<PlayerController>().isGravityFlipped = false;
         }
