@@ -6,11 +6,14 @@ public class ButtonPressSingle : MonoBehaviour
 {
     public GameObject AnimatedObject;
     public GameObject Button;
+    public GameObject bridge;
+
     public bool isDoorOpen;
     public bool Pressed;
 
     private Animator blueButton;
     private Animator _animator;
+    
 
 
     // Start is called before the first frame update
@@ -33,6 +36,7 @@ public class ButtonPressSingle : MonoBehaviour
         {
             isDoorOpen = true;
             Pressed = true;
+            bridge.SetActive(true);
         }
     }
 }
