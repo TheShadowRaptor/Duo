@@ -530,24 +530,21 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Left ArrowKey = Camera move left
+  m_text: 'Left/Right ArrowKeys = Camera Move
 
-    Right ArrowKey = Camera move right
+    Up/Down ArrowKeys = Camera Look
 
-    Up
-    ArrowKey = Camera Look Up
+    F
+    = Camera Pick Up
 
-    Down ArrowKey = Camera Look Down
-
-    F = Camera
-    Arms Close
-
-    G = Camera Arms Open
+    G = Camera Drop
 
     WASD = Ball Movement
 
-    Space = Ball
-    Jump'
+    Space =
+    Ball Jump
+
+    R = Reset Stage'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -9370,7 +9367,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 34.247925, y: 72.04704}
+  m_AnchoredPosition: {x: 377.0479, y: 170.04706}
   m_SizeDelta: {x: 398.28003, y: 73.281494}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &621638757
@@ -12426,7 +12423,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 427.80713, y: -52.1296}
+  m_AnchoredPosition: {x: 156.04791, y: -125.029594}
   m_SizeDelta: {x: 248.56177, y: 77.0051}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &1317065583
@@ -12737,7 +12734,7 @@ Transform:
   - {fileID: 367667841}
   - {fileID: 1149382372}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1494241403
 GameObject:
@@ -41594,7 +41591,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1931665831}
   m_CullTransparentMesh: 1
---- !u!43 &1994430230
+--- !u!43 &1948391146
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
