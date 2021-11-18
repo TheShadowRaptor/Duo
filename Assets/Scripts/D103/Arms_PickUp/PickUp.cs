@@ -26,13 +26,7 @@ public class PickUp : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (Input.GetKey("g"))
-        {
-            this.transform.parent = null;
-            this.GetComponent<Renderer>().material = NormalMaterial;
-            GetComponent<Rigidbody>().useGravity = true;
-            rb.isKinematic = false;
-        }
+        
     }
 
     void OnTriggerStay(Collider other)
@@ -45,8 +39,14 @@ public class PickUp : MonoBehaviour
             this.transform.parent = GameObject.Find("Destination").transform;
             rb.isKinematic = true;
         }
-            
-            
-            
+
+        if (Input.GetKey("g") && other.gameObject.tag == "GravityBeam")
+        {
+            this.transform.parent = null;
+            this.GetComponent<Renderer>().material = NormalMaterial;
+            GetComponent<Rigidbody>().useGravity = true;
+            rb.isKinematic = false;
+        }
+
     }
 }

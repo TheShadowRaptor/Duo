@@ -7348,6 +7348,10 @@ PrefabInstance:
       propertyPath: m_UseGravity
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4481754603584349556, guid: 43c0433b8dd78514585d72c2ba849a5f, type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4481754603584349558, guid: 43c0433b8dd78514585d72c2ba849a5f, type: 3}
       propertyPath: m_Name
       value: LightBox
