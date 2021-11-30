@@ -16,6 +16,8 @@ public class D103Universal : MonoBehaviour
 
     public bool isGravityFlipped = false;
 
+    public Animator animator;
+
     private Rigidbody rb;
 
     private float xRotate;
@@ -51,27 +53,8 @@ public class D103Universal : MonoBehaviour
         else if (Input.GetKey("right") && moveR == (true) && isGravityFlipped == (false))
         {
             transform.Translate(0.12f, 0, 0);
-        }
+        } 
 
-        //------------------------------------------------GravityFlip----------------------------------------------------
-
-        if (Input.GetKey("left") && moveL == (true) && Input.GetKey("left shift") && isGravityFlipped == (true))
-        {
-            transform.Translate(0.17f, 0, 0);
-        }
-        else if (Input.GetKey("left") && moveL == (true) && isGravityFlipped == (true))
-        {
-            transform.Translate(0.12f, 0, 0);
-        }
-
-        if (Input.GetKey("right") && moveR == (true) && Input.GetKey("left shift") && isGravityFlipped == (true))
-        {
-            transform.Translate(-0.17f, 0, 0);
-        }
-        else if (Input.GetKey("right") && moveR == (true) && isGravityFlipped == (true))
-        {
-            transform.Translate(-0.12f, 0, 0);
-        }
 
         xRotate = cameraBlock.transform.eulerAngles.x;
 
@@ -85,18 +68,6 @@ public class D103Universal : MonoBehaviour
             if (Input.GetKey("down") && (moveDown == true) && isGravityFlipped == (false))
             {
                 xRotate += turningSpeed;
-            }
-
-            //----------------------------------GravityFlip--------------------------------
-
-            if (Input.GetKey("up") && (moveUp == true) && isGravityFlipped == (true))
-            {
-                xRotate += turningSpeed;
-            }
-
-            if (Input.GetKey("down") && (moveDown == true) && isGravityFlipped == (true))
-            {
-                xRotate += -turningSpeed;
             }
         }
 
@@ -118,7 +89,7 @@ public class D103Universal : MonoBehaviour
         {
             moveL = false;
         }
-        if (collision.gameObject.CompareTag("Wall") && Input.GetKey("right") || (collision.gameObject.CompareTag("Wall") && Input.GetKey("right") && Input.GetKey("left shift")))
+        if (collision.gameObject.CompareTag("Wall") && Input.GetKey("right"))
         {
             moveR = false;
         }
@@ -130,9 +101,9 @@ public class D103Universal : MonoBehaviour
         if (collision.gameObject.CompareTag("Ceiling") && Input.GetKey("up"))
         {
             moveUp = false;
-        }
+        }       
+
         //-------------------------------------------------------------------------------
-    
     }
 
     private void OnCollisionExit(Collision collision)
