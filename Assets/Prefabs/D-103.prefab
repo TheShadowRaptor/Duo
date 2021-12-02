@@ -775,6 +775,7 @@ MonoBehaviour:
   moveDown: 1
   moveUp: 1
   moveDL: 1
+  firstMove: 0
   isGravityFlipped: 0
   animator: {fileID: 0}
   yRotate: 90

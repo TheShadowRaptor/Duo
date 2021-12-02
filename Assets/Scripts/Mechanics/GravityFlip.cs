@@ -6,8 +6,6 @@ public class GravityFlip : MonoBehaviour
 {
     public bool isFlipped = false;
 
-    public GameObject camera;
-
     public GameObject D103;
     public GameObject U20;
 
@@ -36,6 +34,7 @@ public class GravityFlip : MonoBehaviour
             
             isFlipped = true;
             D103.GetComponent<D103Universal>().isGravityFlipped = true;
+            D103.GetComponent<D103Universal>().oneTime = true;
             U20.GetComponent<PlayerController>().isGravityFlipped = true;
         }                        
     }

@@ -21,6 +21,7 @@ TagManager:
   - Ceiling
   - GravityBeam
   - Dest
+  - Wall2
   layers:
   - Default
   - TransparentFX

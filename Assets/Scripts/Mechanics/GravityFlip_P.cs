@@ -26,6 +26,7 @@ public class GravityFlip_P : MonoBehaviour
             Physics.gravity = new Vector3(0f, -9.807f, 0f);
             gravity.GetComponent<GravityFlip>().isFlipped = false;
             D103.GetComponent<D103Universal>().isGravityFlipped = false;
+            D103.GetComponent<D103Universal>().oneTime = true;
             U20.GetComponent<PlayerController>().isGravityFlipped = false;
         }
     }
