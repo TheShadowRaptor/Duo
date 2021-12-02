@@ -31,7 +31,7 @@ public class PickUp : MonoBehaviour
 
     void OnTriggerStay(Collider other)
     {
-        if (Input.GetKey("f") && other.gameObject.tag == "GravityBeam")
+        if (Input.GetKey("q") && other.gameObject.tag == "GravityBeam")
         {
             GetComponent<Rigidbody>().useGravity = false;
             this.GetComponent<Renderer>().material = PickUpMaterial;
@@ -40,7 +40,7 @@ public class PickUp : MonoBehaviour
             rb.isKinematic = true;
         }
 
-        if (Input.GetKey("g") && other.gameObject.tag == "GravityBeam")
+        if (Input.GetKey("e") && other.gameObject.tag == "GravityBeam")
         {
             this.transform.parent = null;
             this.GetComponent<Renderer>().material = NormalMaterial;

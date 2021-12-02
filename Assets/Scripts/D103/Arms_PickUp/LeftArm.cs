@@ -17,7 +17,7 @@ public class LeftArm : MonoBehaviour
 
     void Update()
     {
-        if (stopF == false && Input.GetKey("f"))
+        if (stopF == false && Input.GetKey("q"))
         {
             transform.Translate(0.01f, 0, 0);
         }
@@ -27,7 +27,7 @@ public class LeftArm : MonoBehaviour
             transform.Translate(0, 0, 0);
         }
 
-        if (stopG == false && Input.GetKey("g"))
+        if (stopG == false && Input.GetKey("e"))
         {
             transform.Translate(-0.01f, 0, 0);
         }
