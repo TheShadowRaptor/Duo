@@ -52,20 +52,6 @@ public class D103Universal : MonoBehaviour
 
        //------------------------------------------------------------
 
-       if (oneTime == true && moveR == false)
-       {
-           moveL = false;
-           moveR = true;
-           onHit = true;
-       }
-
-       if (Input.GetKey("right") && onHit == true)
-       {
-           moveL = true;
-           oneTime = false;
-           onHit = false;
-       }
-
     }
 
     private void FixedUpdate()
