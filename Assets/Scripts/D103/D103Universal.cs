@@ -15,9 +15,7 @@ public class D103Universal : MonoBehaviour
     public bool moveDL = true;
 
     public bool isGravityFlipped = false;
-
     public bool oneTime = false;
-
     public bool onHit = false;
 
     public Animator animator;
@@ -26,6 +24,10 @@ public class D103Universal : MonoBehaviour
 
     private float xRotate;
     public float yRotate;
+
+    private float timer = 2;
+
+    private bool isTimerActive = true;
 
     // Start is called before the first frame update
     void Start()
@@ -50,93 +52,109 @@ public class D103Universal : MonoBehaviour
            onHit = false;
        }
 
-       //------------------------------------------------------------
+        if (isTimerActive == true)
+        {
+            timer -= 1 * Time.deltaTime;
+
+            if (timer <= 0)
+            {
+                timer = 0;
+                isTimerActive = false;
+            }
+        }
+
+        //------------------------------------------------------------
 
     }
 
     private void FixedUpdate()
     {
-        if (Input.GetKey("left") && moveL == (true) && Input.GetKey("left shift") && isGravityFlipped == (false))
+        if (isTimerActive == false)
         {
-            transform.Translate(-0.17f, 0, 0);
-        }
-        else if (Input.GetKey("left") && moveL == (true) && isGravityFlipped == (false))
-        {
-            transform.Translate(-0.12f, 0, 0);
-        }
-
-        if (Input.GetKey("right") && moveR == (true) && Input.GetKey("left shift") && isGravityFlipped == (false))
-        {
-            transform.Translate(0.17f, 0, 0);
-        }
-        else if (Input.GetKey("right") && moveR == (true) && isGravityFlipped == (false))
-        {
-            transform.Translate(0.12f, 0, 0);
-        }
-
-
-        //--------------------------------------------------------------------------------------------------------------------
-
-
-        if (Input.GetKey("left") && moveL == (true) && Input.GetKey("left shift") && isGravityFlipped == (true))
-        {
-            transform.Translate(0.17f, 0, 0);
-        }
-        else if (Input.GetKey("left") && moveL == (true) && isGravityFlipped == (true))
-        {
-            transform.Translate(0.12f, 0, 0);
-        }
-
-        if (Input.GetKey("right") && moveR == (true) && Input.GetKey("left shift") && isGravityFlipped == (true))
-        {
-            transform.Translate(-0.17f, 0, 0);
-        }
-        else if (Input.GetKey("right") && moveR == (true) && isGravityFlipped == (true))
-        {
-            transform.Translate(-0.12f, 0, 0);
-        }
-        
-
-        //---------------------------------------------------------------------------------------------------------------------
-
-
-        xRotate = cameraBlock.transform.eulerAngles.x;
-
-        if (xRotate <= 70f || xRotate >= 290)
-        {
-            if (Input.GetKey("up") && (moveUp == true) && isGravityFlipped == (false))
+            if (isGravityFlipped == false)
             {
-                xRotate += -turningSpeed;
+                if (Input.GetKey("left") && moveL == (true) && Input.GetKey("left shift"))
+                {
+                    transform.Translate(-0.17f, 0, 0);
+                }
+                else if (Input.GetKey("left") && moveL == (true))
+                {
+                    transform.Translate(-0.12f, 0, 0);
+                }
+
+                if (Input.GetKey("right") && moveR == (true) && Input.GetKey("left shift"))
+                {
+                    transform.Translate(0.17f, 0, 0);
+                }
+                else if (Input.GetKey("right") && moveR == (true))
+                {
+                    transform.Translate(0.12f, 0, 0);
+                }
+            }            
+
+        //---------------------------------------------------------------------------------------------
+
+            if (isGravityFlipped == true)
+            {
+                if (Input.GetKey("left") && moveL == (true) && Input.GetKey("left shift"))
+                {
+                    transform.Translate(0.17f, 0, 0);
+                }
+                else if (Input.GetKey("left") && moveL == (true))
+                {
+                    transform.Translate(0.12f, 0, 0);
+                }
+
+                if (Input.GetKey("right") && moveR == (true) && Input.GetKey("left shift"))
+                {
+                    transform.Translate(-0.17f, 0, 0);
+                }
+                else if (Input.GetKey("right") && moveR == (true))
+                {
+                    transform.Translate(-0.12f, 0, 0);
+                }
+            }
+                            
+        //===============================================================================================
+
+            xRotate = cameraBlock.transform.eulerAngles.x;
+
+            if (xRotate <= 70f || xRotate >= 290)
+            {
+                if (Input.GetKey("up") && (moveUp == true) && isGravityFlipped == (false))
+                {
+                    xRotate += -turningSpeed;
+                }
+
+                if (Input.GetKey("down") && (moveDown == true) && isGravityFlipped == (false))
+                {
+                    xRotate += turningSpeed;
+                }
+
+                //-------------------------------------------------------------------------------------------------------------------
+
+                if (Input.GetKey("up") && (moveUp == true) && isGravityFlipped == (true))
+                {
+                    xRotate += turningSpeed;
+                }
+
+                if (Input.GetKey("down") && (moveDown == true) && isGravityFlipped == (true))
+                {
+                    xRotate += -turningSpeed;
+                }
             }
 
-            if (Input.GetKey("down") && (moveDown == true) && isGravityFlipped == (false))
+            else if (xRotate > 70f && xRotate < 170f)
             {
-                xRotate += turningSpeed;
+                xRotate = 69.9f;
             }
 
-            //-------------------------------------------------------------------------------------------------------------------
-
-            if (Input.GetKey("up") && (moveUp == true) && isGravityFlipped == (true))
+            else if (xRotate < 290f && xRotate > 170f)
             {
-                xRotate += turningSpeed;
+                xRotate = 290.1f;
             }
-
-            if (Input.GetKey("down") && (moveDown == true) && isGravityFlipped == (true))
-            {
-                xRotate += -turningSpeed;
-            }
+                cameraBlock.transform.rotation = Quaternion.Euler(xRotate, yRotate, 0f);
         }
-
-        else if (xRotate > 70f && xRotate < 170f)
-        {
-            xRotate = 69.9f;
-        }
-
-        else if (xRotate < 290f && xRotate > 170f)
-        {
-            xRotate = 290.1f;
-        }
-            cameraBlock.transform.rotation = Quaternion.Euler(xRotate, yRotate, 0f);
     }
 
     private void OnCollisionEnter(Collision collision)

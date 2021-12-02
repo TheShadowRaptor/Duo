@@ -13,14 +13,17 @@ public class PlayerController : MonoBehaviour
     public float falseGravityPos = 0;
     public float falseGravityNag = 0;
 
-
     private Rigidbody rb;
+    public Animator screenFade;
 
     public bool isgrounded;
     public bool isGravityFlipped = false;
+    public bool isTimerActive = true;
 
     private float MovementX;
     private float MovementY;
+    private float timer = 2;
+
     public bool stop = true;
     public bool gravityNorm = true;
 
@@ -28,7 +31,8 @@ public class PlayerController : MonoBehaviour
     void Start()
         //=================Gives RigidBody=====================
     {
-        rb = GetComponent<Rigidbody>();     
+        rb = GetComponent<Rigidbody>();
+
     }
         //=====================================================
     void Update()
@@ -39,6 +43,18 @@ public class PlayerController : MonoBehaviour
             rb.velocity = Vector3.ClampMagnitude(rb.velocity, jump);
         }
         //=====================================================
+
+        //=====================Start Timer=====================
+        if (isTimerActive == true)
+        {
+            timer -= 1 * Time.deltaTime;
+
+            if (timer <= 0)
+            {
+                timer = 0;
+                isTimerActive = false;
+            }
+        }
     }
 
     private void OnMove(InputValue movementValue)
@@ -99,19 +115,20 @@ public class PlayerController : MonoBehaviour
         //======================================================
 
         //====================Adds Force to ball================        
-
-        if (isGravityFlipped == false)
+        if(isTimerActive == false)
         {
-            Vector3 movement = Quaternion.Euler(0, Camera.main.transform.eulerAngles.y, 0) * new Vector3(MovementX, 0.0f, MovementY);
-            rb.AddForce(movement * speed);
-        }
+            if (isGravityFlipped == false)
+            {
+                Vector3 movement = Quaternion.Euler(0, Camera.main.transform.eulerAngles.y, 0) * new Vector3(MovementX, 0.0f, MovementY);
+                rb.AddForce(movement * speed);
+            }
 
-        if (isGravityFlipped == true)
-        {
-            Vector3 movement = Quaternion.Euler(0, Camera.main.transform.eulerAngles.y, 0) * new Vector3(-MovementX, 0.0f, MovementY);
-            rb.AddForce(movement * speed);
-        }
-
+            if (isGravityFlipped == true)
+            {
+                Vector3 movement = Quaternion.Euler(0, Camera.main.transform.eulerAngles.y, 0) * new Vector3(-MovementX, 0.0f, MovementY);
+                rb.AddForce(movement * speed);
+            }
+        }        
         //======================================================
 
         //==================Gives Mass Gravity==================
@@ -119,18 +136,21 @@ public class PlayerController : MonoBehaviour
         //======================================================
 
         //====================Jump button=======================
-        if (isgrounded && Input.GetButton("Jump") && isGravityFlipped == false)
+        if (isTimerActive == false)
+        {
+            if (isgrounded && Input.GetButton("Jump") && isGravityFlipped == false)
             {
-                rb.AddForce(new Vector3(0, jump, 0), ForceMode.Impulse);               
+                rb.AddForce(new Vector3(0, jump, 0), ForceMode.Impulse);
                 isgrounded = false;
 
             }
 
-        if (isgrounded && Input.GetButton("Jump") && isGravityFlipped == true)
-        {
-            rb.AddForce(new Vector3(0, -jump, 0), ForceMode.Impulse);
-            isgrounded = false;
+            if (isgrounded && Input.GetButton("Jump") && isGravityFlipped == true)
+            {
+                rb.AddForce(new Vector3(0, -jump, 0), ForceMode.Impulse);
+                isgrounded = false;
 
+            }
         }
         //=====================================================
 
