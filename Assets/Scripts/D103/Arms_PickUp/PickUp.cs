@@ -11,22 +11,11 @@ public class PickUp : MonoBehaviour
     public Material NormalMaterial;
 
     private Rigidbody rb;
-    // Start is called before the first frame update
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         theDest = GameObject.FindWithTag("Dest").transform;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    void FixedUpdate()
-    {
-        
     }
 
     void OnTriggerStay(Collider other)
