@@ -69,50 +69,8 @@ public class PlayerController : MonoBehaviour
 
     // Update is called once per frame
     private void FixedUpdate()
-    {     
-        //=================Raycast Ground detect================
-        
-        if (isGravityFlipped == false)
-        {
-            RaycastHit hit;
-            Ray Grounded = new Ray(transform.position, Vector3.down);
-            if (!isgrounded)
-            {
-                if (Physics.Raycast(Grounded, out hit, rayLength))
-                {
-                    if (hit.collider)
-                    {
-                        isgrounded = true;
-                    }
-                    else
-                    {
-                        isgrounded = false;
-                    }
-                }
-            }
-        }
-
-        if (isGravityFlipped == true)
-        {
-            RaycastHit hit;
-            Ray Grounded = new Ray(transform.position, Vector3.up);
-            if (!isgrounded)
-            {
-                if (Physics.Raycast(Grounded, out hit, rayLength))
-                {
-                    if (hit.collider)
-                    {
-                        isgrounded = true;
-                    }
-                    else
-                    {
-                        isgrounded = false;
-                    }
-                }
-            }
-        }
-
-        //======================================================
+    {
+        DetectIfOnGround();
 
         //====================Adds Force to ball================        
         if(isTimerActive == false)
@@ -159,11 +117,58 @@ public class PlayerController : MonoBehaviour
         {
             rb.AddForce(0, falseGravityPos, 0);
         }
-            else
+        else
         {
             rb.AddForce(0, falseGravityNag, 0);
         }
            //==================================================
+    }
+
+    void DetectIfOnGround()
+    {
+        //=================Raycast Ground detect================
+
+        if (isGravityFlipped == false)
+        {
+            RaycastHit hit;
+            Ray Grounded = new Ray(transform.position, Vector3.down);
+            if (!isgrounded)
+            {
+                if (Physics.Raycast(Grounded, out hit, rayLength))
+                {
+                    if (hit.collider)
+                    {
+                        isgrounded = true;
+                    }
+                    else
+                    {
+                        isgrounded = false;
+                    }
+                }
+            }
+        }
+
+        if (isGravityFlipped == true)
+        {
+            RaycastHit hit;
+            Ray Grounded = new Ray(transform.position, Vector3.up);
+            if (!isgrounded)
+            {
+                if (Physics.Raycast(Grounded, out hit, rayLength))
+                {
+                    if (hit.collider)
+                    {
+                        isgrounded = true;
+                    }
+                    else
+                    {
+                        isgrounded = false;
+                    }
+                }
+            }
+        }
+
+        //======================================================
     }
 
     private void OnCollisionEnter(Collision collision)

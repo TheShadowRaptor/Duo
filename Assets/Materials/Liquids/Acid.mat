@@ -1,15 +1,29 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-2642993348307516585
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 5
 --- !u!21 &2100000
 Material:
-  serializedVersion: 6
+  serializedVersion: 8
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Acid
   m_Shader: {fileID: -6465566751694194690, guid: 65e00a86ba0007e4cb14c1485e4e62b8, type: 3}
-  m_ShaderKeywords: 
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -35,6 +49,7 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    m_Ints: []
     m_Floats:
     - Vector1_0595c2c6340444c7a2726a344c84c0ce: 20
     - Vector1_3e76c39dcdd64448a57f18bca7aec63d: 0.33
@@ -43,6 +58,8 @@ Material:
     - Vector1_e0daa2787500428297548f1525251cc2: 6
     - Vector1_e604218114fa4d6886a8bbe215800997: 5
     - Vector1_f9ed99baa7494859b6efc59fb191fdf8: 0.05
+    - _QueueControl: 0
+    - _QueueOffset: 0
     m_Colors:
     - Color_918231e918f54274911e9c7e83087c44: {r: 0.30588236, g: 1.4980392, b: 0, a: 1}
     - Color_93989779cddc4490b4c4626d77c95632: {r: 0.08708265, g: 0.7075471, b: 0, a: 0.6509804}
